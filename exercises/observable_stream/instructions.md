@@ -52,6 +52,8 @@ using the `assertThat` (statically imported), test the following:
 * That the observable pushed exactly two strings
 * That the observable pushed "Foo" and "Bar" only once
 
+```
 [comment]: <> (assertThat(data).hasSize(2);)
 [comment]: <> (assertThat(data).containsOnlyOnce("Foo");)
 [comment]: <> (assertThat(data).containsOnlyOnce("Bar");)
+```
