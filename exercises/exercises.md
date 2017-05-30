@@ -10,5 +10,8 @@ The idea is that we will discuss the various suggested solutions and find which 
 ## Exercises
 
 1. [Get started](get_started/instructions.md)
-1. [Impvoving Latency with RxJava](latency/instructions.md)
+1. [Simple Testing](simple_asserts/instructions.md)
+1. [Just vs From](just_vs_from/instructions.md)
+1. [Functions](functions/instructions.md)
+1. [Improving Latency with RxJava](latency/instructions.md)
 1. [Infinite Series](infinite_series/instructions.md)
