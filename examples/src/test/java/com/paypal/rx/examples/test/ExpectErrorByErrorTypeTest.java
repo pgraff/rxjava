@@ -1,4 +1,4 @@
-package com.paypal.rxjava.examples.test;
+package com.paypal.rx.examples.test;
 
 import org.junit.Test;
 
