@@ -93,7 +93,7 @@ public void printCountryCodesOfCountriesWhichNameIsShorterThan6Characters() {
 }
 ```
 
-## Final challenge
+## Final map challenge
 
 In this final challenge we'll ask you to print out a set of data about each country by using a rest call.
 
@@ -136,3 +136,59 @@ public class SimpleHtmlClient {
 To obtain the response to say the country code 'nor', you can make a request to:
 
   https://restcountries.eu/rest/v2/alpha/nor
+
+## Reduce
+
+Let's take a look at one of the other functions, namely `reduce`.
+
+Let's make a simple scenario.
+
+Let's assume we have a class like this (you can copy and paste it into the test class as a nested class).
+
+```java
+public static class ElevatorPassenger {
+    private String name;
+
+    public int getWeightInPounds() {
+        return weightInPounds;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int weightInPounds;
+
+    public ElevatorPassenger(String name, int weightInPounds) {
+        this.name = name;
+        this.weightInPounds = weightInPounds;
+    }
+
+    public String toString() {
+        return "ElevatorPassenger{" +
+                "name='" + this.name + '\'' +
+                ", weightInPounds=" + this.weightInPounds +
+                '}';
+    }
+}
+```
+
+Now let's also assume we have a few passengers...
+
+```java
+List<ElevatorPassenger> elevatorPassengers = Arrays.asList(
+        new ElevatorPassenger("Ringo", 168),
+        new ElevatorPassenger("Paul", 200),
+        new ElevatorPassenger("George", 192),
+        new ElevatorPassenger("John", 142),
+        new ElevatorPassenger("Yoko", 110),
+        new ElevatorPassenger("Linda", 114));
+```
+
+Setup a pipeline and use the reduce function to calculate the total weight of our passengers.
+
+Make sure you test with assert. Things to check:
+
+* There should be exactly one value emitted
+* The value should be 926 (if you copied the array above)
+* There should be no errors emitted

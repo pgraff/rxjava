@@ -71,3 +71,25 @@ Ask yourself:
 You can probably copy the serial implementation and modify it (the differences should not be all that extensive)/
 
 Did it improve latency?
+
+## `observeOn` vs. `subscribeon`
+
+In this exercise we have a simple test case:
+
+```java
+@Test
+public void differenceBetweenSubscribeOnAndObserveOn() {
+    Observable
+    .from(Data.continents)
+    .doOnNext((continent) -> System.out.println("Observed on " + Thread.currentThread().getName() + " and received " + continent.getName()))
+    .map(Continent::getName)
+    .subscribe ((name) -> System.out.println("Subscribed on " + Thread.currentThread().getName() + " and received " + name));
+}
+```
+
+We want to change the pipeline so that the `subscribe` function runs on the `io` thread pool and the `doOnNext` runs on the `computation` thread.
+
+Modify the pipeline to make it happen :)
+
+Hints:
+* `subscribeOn` will not work...
