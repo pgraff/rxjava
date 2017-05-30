@@ -16,6 +16,7 @@ public class ExceptionExamples {
 		excpetionExample1();
 		excpetionExample2();
 		excpetionExample3();
+		exceptionExample4();
 	}
 	
 	public static final Observable<Integer> pipeline = 	Observable
@@ -63,6 +64,16 @@ public class ExceptionExamples {
 		catch (Throwable t) {
 			System.out.println("Exception in example 3: " + t.getMessage());
 		}
+	}
+	
+	private static void exceptionExample4() {
+		Observable.just("Hello!")  
+		  .map(input -> { throw new RuntimeException(); })
+		  .subscribe(
+		    System.out::println,
+		    error -> System.out.println("Error!")
+		  );
+
 	}
 
 }

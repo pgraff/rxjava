@@ -15,6 +15,7 @@ our best practices.
 
 * [Slides](https://docs.google.com/presentation/d/1wuim_9yYI8JbZ7__MrIX7j1siaO8TwqwYccuVhFnLLM/edit?usp=sharing)
 * [GitHub Repo] (http://github.paypal.com/GlobalTechEd/rxjava)
+* [Exercises] (exercises/exercises.md)
 
 ### Basic introduction
 
