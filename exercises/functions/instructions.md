@@ -45,7 +45,7 @@ Create a test function as shown below:
 
 ```java
 @Test
-public void printAllCountryNamesUpcased() {
+public void printAllContinentNamesUpcased() {
   //TODO: Use RxJava to extract the continent names from the data and upcase the names
 //  testSubscriber.assertNoErrors();
 //  testSubscriber.assertCompleted();
