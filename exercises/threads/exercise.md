@@ -1,7 +1,6 @@
 # Concurrency and Latency
 
 ## Discussion
-## Discussions
 
 One trivial optimization that we often run across at PayPal is improving the latency by introducing parallelism in a service downstream calls.
 
@@ -90,7 +89,38 @@ public class Concurrency {
 
 ```
 
+## Switching threads
+
+Before we dive into the latency issues, let's make sure we understand how we can
+swithc processing threads in the pipeline.
+
+In this exercise we have a simple test case:
+
+```java
+@Test
+public void differenceBetweenSubscribeOnAndObserveOn() {
+    Observable
+    .from(Data.continents)
+    .doOnNext((continent) -> System.out.println("Observed on " + Thread.currentThread().getName() + " and received " + continent.getName()))
+    .map(Continent::getName)
+    .subscribe ((name) -> System.out.println("Subscribed on " + Thread.currentThread().getName() + " and received " + name));
+}
+```
+
+We want to change the pipeline so that the `subscribe` function runs on a thread from the  `computation` thread pool and the `doOnNext` runs on a thread from the `io` pool.
+
+Modify the pipeline to make it happen :)
+
+Hints:
+* `subscribeOn` will not work
+* You may encounter that the application exits before you complete the run...
+  You may perhaps be best off adding a simple sleep to prevent this from happening
+
 ## Improving the country fetch by introducing parallelism
+
+Now that we know how to switch threads, let's see if we can take advantage of
+our knowledge to improve the latency of our previous exercise where we fetched
+country data from the web.
 
 Here is a synchronous test that fetch country data...
 
@@ -124,30 +154,6 @@ Ask yourself:
 * Which scheduler should I use?
 * What operators should I use?
 
-
-You can probably copy the serial implementation and modify it (the differences should not be all that extensive)/
+You can probably copy the serial implementation and modify it to introduce parallelism.
 
 Did it improve latency?
-
-## `observeOn` vs. `subscribeon`
-
-In this exercise we have a simple test case:
-
-```java
-@Test
-public void differenceBetweenSubscribeOnAndObserveOn() {
-    Observable
-    .from(Data.continents)
-    .doOnNext((continent) -> System.out.println("Observed on " + Thread.currentThread().getName() + " and received " + continent.getName()))
-    .map(Continent::getName)
-    .subscribe ((name) -> System.out.println("Subscribed on " + Thread.currentThread().getName() + " and received " + name));
-}
-```
-
-We want to change the pipeline so that the `subscribe` function runs on the `io` thread pool and the `doOnNext` runs on the `computation` thread.
-
-Modify the pipeline to make it happen :)
-
-Hints:
-* `subscribeOn` will not work...    	.observeOn(Schedulers.computation())
-u

@@ -14,4 +14,5 @@ The idea is that we will discuss the various suggested solutions and find which 
 1. [Just vs From](just_vs_from/instructions.md)
 1. [Functions](functions/instructions.md)
 1. [Controlling Threads in RxJava](threads/instructions.md)
+1. [Exception Handling in RxJava](exceptionhandling/instructions.md)
 1. [Infinite Series](infinite_series/instructions.md)
